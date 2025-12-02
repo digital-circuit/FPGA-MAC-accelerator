@@ -17,7 +17,7 @@
         → (axi_dma_0, M_AXIS_MM2S → mac_axis, FIFO_axis)
         → (axi_dma_1, M_AXIS_MM2S → mac_axis, BRAM_axis)
         → (axi_dma_2, M_AXIS_MM2S → mac_axis, param_axis)
-        → (axi_dma_3, S_AXIS_MM2S → mac_axis, param_axis)
+        → (axi_dma_3, S_AXIS_MM2S → mac_axis, output_axis)
         → {AXI Interconnect: AXI_ic}
         → (axi_dma_0, M_AXI_MM2S → AXI_ic, S00_AXI)
         → (axi_dma_1, M_AXI_MM2S → AXI_ic, S01_AXI)
@@ -48,13 +48,58 @@
                 FCLK_CLK0: ☑/IO PLL/50
 
 - AXI Direct Memory Access: axi_dma_0
-
-    
+  
+        Enable Scatter Gather Engine: ☐
+        Enable Micro DMA: ☐
+        Width of Buffer Length Length register: 26
+        Address Width: 32
+        → Enable Read Channel: ☑
+                Number of Channels: 1
+                Memory Map Data Width: 128
+                Stream Data Width: 128
+                Max Burst Size: 256
+        → Enable Write Channel: ☐
 
 - AXI Direct Memory Access: axi_dma_1
+  
+        Enable Scatter Gather Engine: ☐
+        Enable Micro DMA: ☐
+        Width of Buffer Length Length register: 26
+        Address Width: 32
+        → Enable Read Channel: ☑
+                Number of Channels: 1
+                Memory Map Data Width: 128
+                Stream Data Width: 128
+                Max Burst Size: 256
+        → Enable Write Channel: ☐
+
 - AXI Direct Memory Access: axi_dma_2
+  
+        Enable Scatter Gather Engine: ☐
+        Enable Micro DMA: ☐
+        Width of Buffer Length Length register: 26
+        Address Width: 32
+        → Enable Read Channel: ☑
+                Number of Channels: 1
+                Memory Map Data Width: 32
+                Stream Data Width: 32
+                Max Burst Size: 256
+        → Enable Write Channel: ☐
+
 - AXI Direct Memory Access: axi_dma_3
-- AXI Interconnect
+  
+        Enable Scatter Gather Engine: ☐
+        Enable Micro DMA: ☐
+        Width of Buffer Length Length register: 26
+        Address Width: 32
+        → Enable Read Channel: ☐
+        → Enable Write Channel: ☑
+                Number of Channels: 1
+                Memory Map Data Width: 32
+                Stream Data Width: 32
+                Max Burst Size: 256
+
+- AXI Interconnect: AXI_ic
 
         → Top Level Settings
             Number of Slave interface: 4
