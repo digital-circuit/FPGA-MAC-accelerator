@@ -12,13 +12,13 @@
         → {AXI Direct Memory Access: axi_dma_1}
         → {AXI Direct Memory Access: axi_dma_2}
         → {AXI Direct Memory Access: axi_dma_3}
-        → wiring automation ※ processing_system7_0 ☐
+        → wiring automation ※ processing_system7_0 ☐ ..... (1)
         → {mac_axis}
         → (axi_dma_0, M_AXIS_MM2S → mac_axis, FIFO_axis)
         → (axi_dma_1, M_AXIS_MM2S → mac_axis, BRAM_axis)
         → (axi_dma_2, M_AXIS_MM2S → mac_axis, param_axis)
         → (axi_dma_3, S_AXIS_MM2S → mac_axis, output_axis)
-        → {AXI Interconnect: AXI_ic}
+        → {AXI Interconnect: AXI_ic} # Don't confuse with "AXI interface" that added at (1)
         → (axi_dma_0, M_AXI_MM2S → AXI_ic, S00_AXI)
         → (axi_dma_1, M_AXI_MM2S → AXI_ic, S01_AXI)
         → (axi_dma_2, M_AXI_MM2S → AXI_ic, S02_AXI)
