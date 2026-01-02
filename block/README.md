@@ -36,9 +36,9 @@
             → Memory interface 
                 Ouad SPI Flash: ☐
             → I/O Peripherais 
-                ENET 0: ☐
-                USB 0: ☐
-                SD 0: ☐
+                ENET 0: ☑
+                USB 0: ☑
+                SD 0: ☑
             → GPIO
                 GPIO MIO: ☐
                 USB Reset: ☐
