@@ -18,12 +18,17 @@
         → (axi_dma_1, M_AXIS_MM2S → mac_axis, BRAM_axis)
         → (axi_dma_2, M_AXIS_MM2S → mac_axis, param_axis)
         → (axi_dma_3, S_AXIS_MM2S → mac_axis, output_axis)
-        → {AXI Interconnect: AXI_ic} # Don't confuse with "AXI interface" that added at (1)
+        → {AXI SmartConnect: AXI_ic} # Don't confuse with "AXI SmartConnect" that added at (1)
         → (axi_dma_0, M_AXI_MM2S → AXI_ic, S00_AXI)
         → (axi_dma_1, M_AXI_MM2S → AXI_ic, S01_AXI)
         → (axi_dma_2, M_AXI_MM2S → AXI_ic, S02_AXI)
         → (axi_dma_3, S_AXI_MM2S → AXI_ic, S03_AXI)
         → (ZYNQ7, S_AXI_HP0 → AXI_ic, M00_AXI)
+        → {concat: concat}
+        → {axi_dma_0, mm2s_introut → concat, In0}
+        → {axi_dma_1, mm2s_introut → concat, In1}
+        → {axi_dma_2, mm2s_introut → concat, In2}
+        → {axi_dma_3, s2mm_introut → concat, In3}
         → wiring automation
 
 ## IP Configurator
@@ -46,6 +51,10 @@
         → Clock Configuration
             → PL Fabric Clocks
                 FCLK_CLK0: ☑/IO PLL/50
+        → Interrupts
+            → Fabric Insterrupts: ☑
+                → PL-PS Interrupt Prots
+                    IRQ_F2P : ☑
 
 - AXI Direct Memory Access: axi_dma_0
   
@@ -58,6 +67,7 @@
                 Memory Map Data Width: 128
                 Stream Data Width: 128
                 Max Burst Size: 256
+                Allow Unaligned Transfers: ☑
         → Enable Write Channel: ☐
 
 - AXI Direct Memory Access: axi_dma_1
@@ -71,6 +81,7 @@
                 Memory Map Data Width: 128
                 Stream Data Width: 128
                 Max Burst Size: 256
+                Allow Unaligned Transfers: ☑
         → Enable Write Channel: ☐
 
 - AXI Direct Memory Access: axi_dma_2
@@ -84,6 +95,7 @@
                 Memory Map Data Width: 32
                 Stream Data Width: 32
                 Max Burst Size: 256
+                Allow Unaligned Transfers: ☑
         → Enable Write Channel: ☐
 
 - AXI Direct Memory Access: axi_dma_3
@@ -98,9 +110,15 @@
                 Memory Map Data Width: 32
                 Stream Data Width: 32
                 Max Burst Size: 256
+                Allow Unaligned Transfers: ☑
 
-- AXI Interconnect: AXI_ic
+- AXI SmartConnect: AXI_ic
 
         → Top Level Settings
             Number of Slave interface: 4
             Number of Master interface: 1
+
+- concat: concat
+
+        Numver of Ports: 4
+
